@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css?family=Lobster");
+
+.uk-navbar-container{
+    background-color: olivedrab !important;
+}
+.uk-logo {
+    font-size: 18px !important;
+    color: white !important;
+}
+.uk-button img{
+    max-width: 45px;
+    margin: 0 0 0 -15px;
+    border-radius: 100%;
+}
+.uk-button-default{
+    font-size: 30px !important;
+    height: auto !important;
+    margin: 0 0 0 95px !important;
+    width: 20px !important;
+    border: none !important;
+    color: white !important;
+}
+.uk-offcanvas-close{
+    color: white !important;
+    font-size: 30px !important;
+}
+.uk-margin-nav{
+    margin-bottom: 0 !important;
+}
+.navProfile{
+    background-color: black;
+    background-image: url("https://png.pngtree.com/thumb_back/fw800/back_pic/03/61/31/0557a7322b6c277.jpg");
+    background-size: cover;
+    margin: -20px -19px 0px -19px;
+    padding: 25px 0 25px 45px;
+}
+.navProfile img{
+    max-width: 25%;
+    height: auto;
+    border-radius: 100%; 
+}
+.navProfile strong{
+    margin-left: 10px;
+}

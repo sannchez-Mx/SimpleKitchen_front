@@ -1,0 +1,13 @@
+@import url("https://fonts.googleapis.com/css?family=Lobster");
+@import url('https://fonts.googleapis.com/css?family=Major+Mono+Display');
+
+.formEditButton{
+    color: black !important;
+    font-size: 12px !important;
+    width: 50% !important;
+    border: 1px solid !important;
+    margin: 0 0 0 0 !important;
+}
+.formEdit{
+    text-align: center;
+}

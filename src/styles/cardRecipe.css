@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Maven+Pro|Volkhov:700i');
+
+.cardUserImage{
+    max-width: 20%;
+    float: left;
+}
+.uk-card-title{
+    display: inline-grid;
+    margin: 0 0 0 15px;
+}
+.cardDescipcion{
+    font-family: 'Maven Pro', sans-serif;
+    text-align: center;
+}
+.cardName{
+    font-size: small;
+}
+.nada{
+    text-align: center;
+    width: 90% !important;
+    margin: 50px 0 0 30px !important;
+}
+.imageCardRecipe{
+    width:  -webkit-fill-available;
+}

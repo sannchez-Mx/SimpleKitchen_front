@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css?family=Lobster");
+
+form{
+    text-align: -webkit-center;
+}
+.uk-margin{
+    text-align: center !important;
+}
+#tituloForm{
+    text-align: -webkit-center;
+}
+.tituloForm{
+    width: 50%;
+}
+.formButton{
+    background-color: olivedrab !important;
+    border: 1px solid black !important;
+    width: 150px !important;
+    font-size: 14px !important;
+    height: auto !important;
+    margin: 0 0 0 0 !important;
+    color: white !important;
+}
+.parallax{
+    position: fixed;
+    z-index: -1;
+}
+.uk-alert-danger{
+    text-align: center;
+}
