@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { isLoggedIn } from "../../service";
+import { isLoggedIn, DeleteRecipe } from "../../service";
 import {
   faTrashAlt,
   faPen,
@@ -15,13 +15,17 @@ class Profile extends Component {
     super();
     this.state = {
       user: {},
-      recipe: []
+      recipe: [],
+      code: {}
     };
   }
   componentWillMount() {
     const token = localStorage.getItem("token");
     let { recipe } = this.state;
-    const base_url = "http://localhost:3000";
+    const base_url =
+      window.location.hostname === "localhost"
+        ? "http://localhost:3000"
+        : "https://simplekitchen.herokuapp.com";
     if (token) {
       let user = JSON.parse(localStorage.getItem("user"));
       isLoggedIn(this.props.history);
@@ -44,7 +48,19 @@ class Profile extends Component {
     e.preventDefault();
     document.getElementById("upload").click();
   };
-  
+
+  getId = id => {
+    let ID = id;
+    let { code } = this.state;
+    code = ID;
+    this.setState({ code });
+    //console.log(code)
+  };
+  handleDeleteRecipe = () => {
+    let { code } = this.state;
+    DeleteRecipe(code);
+  };
+
   render() {
     let { user, recipe } = this.state;
     return (
@@ -104,15 +120,20 @@ class Profile extends Component {
             {recipe.length > 0 ? (
               recipe.map((item, index) => (
                 <li key={index}>
-                  <Link to={`/detailRecipe/${item._id}`}>{item.name}</Link>
-                  <Link to={`/deleteRecipe/${item._id}`}>
-                    <FontAwesomeIcon
-                      uk-tooltip="Eliminar receta"
-                      className="listIcon"
-                      id="iconLapiz"
-                      icon={faTrashAlt}
-                    />
+                  <Link to={`/recipeDetail/${item._id}`}>
+                    {item.name}
+                    <em name="id" style={{ display: "none" }}>
+                      {item._id}
+                    </em>
                   </Link>
+                  <FontAwesomeIcon
+                    uk-tooltip="Eliminar receta"
+                    className="listIcon"
+                    id="iconLapiz"
+                    icon={faTrashAlt}
+                    uk-toggle="target: #my-id"
+                    onClick={() => this.getId(item._id)}
+                  />
                   <Link to={`/editRecipe/${item._id}`}>
                     <FontAwesomeIcon
                       uk-tooltip="Editar receta"
@@ -120,6 +141,24 @@ class Profile extends Component {
                       icon={faPen}
                     />
                   </Link>
+                  <div id="my-id" uk-modal="true">
+                    <div className="uk-modal-dialog uk-modal-body">
+                      <h4
+                        className="modal-title"
+                        style={{ textAlign: "center", color: "red"}}
+                      >
+                        Seguro que quieres borrar {item.name}{" "}
+                      </h4>
+                      <div style={{ textAlign: "center" }}>
+                        <button className="uk-modal-close" type="button" id="buttonCancel">
+                          Cancelar
+                        </button>
+                        <button className="modal-submit" type="button" onClick={this.handleDeleteRecipe} id="buttonFavorites">
+                          Borrar receta
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </li>
               ))
             ) : (

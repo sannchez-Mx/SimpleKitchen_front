@@ -42,3 +42,63 @@
 .navProfile strong{
     margin-left: 10px;
 }
+@media screen and (min-width: 375px) {
+    .uk-button img{
+        max-width: 45px;
+        margin: 0 0 0 -10px;
+        border-radius: 100%;
+    }
+    .uk-button-default{
+        font-size: 30px !important;
+        height: auto !important;
+        margin: 0 0 0 145px !important;
+        width: 20px !important;
+        border: none !important;
+        color: white !important;
+    }
+}
+@media screen and (min-width: 425px) {
+    .uk-button img{
+        max-width: 45px;
+        margin: 0 0 0 -15px;
+        border-radius: 100%;
+    }
+    .uk-button-default{
+        font-size: 30px !important;
+        height: auto !important;
+        margin: 0 0 0 195px !important;
+        width: 20px !important;
+        border: none !important;
+        color: white !important;
+    }
+}
+@media screen and (min-width: 500px) {
+    .uk-button img{
+        max-width: 45px;
+        margin: 0 0 0 32px;
+        border-radius: 100%;
+    }
+    .uk-button-default{
+        font-size: 30px !important;
+        height: auto !important;
+        margin: 0 0 0 220px !important;
+        width: 20px !important;
+        border: none !important;
+        color: white !important;
+    }
+}
+@media screen and (min-width: 768px) {
+    .uk-button img{
+        max-width: 45px;
+        margin: 0 0 0 0;
+        border-radius: 100%;
+    }
+    .uk-button-default{
+        font-size: 30px !important;
+        height: auto !important;
+        margin: 0 0 0 68vw !important;
+        width: 20px !important;
+        border: none !important;
+        color: white !important;
+    }
+}

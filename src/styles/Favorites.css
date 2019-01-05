@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css?family=Lobster");
+
+#headerFavorites{
+    text-align: center;
+    background-image: url("https://www.vectorizados.com/muestras/2015/10/splash-de-corazones-.gif");
+    background-size: cover;
+    height: 50vw;
+    /* box-shadow: 5px 5px 50px 1px;    */
+    border-bottom: 1px solid;
+}
+#corazonIcon{
+    font-size: 50px;
+    color: red;
+    margin: 45px 0 0 0;
+}
+.favoritesText{
+    font-family: 'Lobster', cursive;
+    margin: 0 0 0 0;
+}
+#buttonFavorites{
+    font-size: 15px;
+    background: red;
+    color: white;
+}
+#buttonCancel{
+    font-size: 15px;
+    background: transparent;
+    margin: 0 10px 0 0;
+}
+#count{
+    color: white;
+    position: absolute;
+    top: 135px;
+    left: 154px;
+    font-size: 20px;
+}
+@media screen and (min-width: 375px) {
+    #count{
+        color: white;
+        position: absolute;
+        top: 135px;
+        left: 182px;
+        font-size: 20px;
+    }
+}
+@media screen and (min-width: 425px) {
+    #count{
+        color: white;
+        position: absolute;
+        top: 135px;
+        left: 208px;
+        font-size: 20px;
+    }
+}
+@media screen and (min-width: 460px) {
+    #count{
+        color: white;
+        position: absolute;
+        top: 135px;
+        left: 225px;
+        font-size: 20px;
+    }
+}

@@ -1,19 +1,32 @@
 import axios from "axios";
+import UIkit from "uikit";
 
-const base_url = "http://localhost:3000";
+const base_url =
+  window.location.hostname === "localhost"
+    ? "http://localhost:3000"
+    : "https://simplekitchen.herokuapp.com";
 
 export const Signup = (user, history) => {
   axios
     .post(`${base_url}/auth/signup`, user)
     .then(res => {
-      alert(res.data.msg);
-      console.log(res);
+      UIkit.notification({
+        message: res.data.msg,
+        status: "success",
+        pos: "top-right",
+        timeout: 2000
+      });
+      //console.log(res);
       history.push("/profile");
     })
     .catch(err => {
-      console.log("Error Signup =====> ", err.response.data.msg);
-      let errMsg = err.response.data.msg;
-      document.getElementById("errMsg").innerHTML = errMsg;
+      //console.log("Error Signup =====> ", err.response.data.msg);
+      UIkit.notification({
+        message: err.response.data.msg,
+        status: "warning",
+        pos: "top-right",
+        timeout: 2000
+      });
     });
 };
 
@@ -23,14 +36,23 @@ export const loginService = (user, history) => {
     .then(res => {
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", JSON.stringify(res.data.user));
-      alert(res.data.msg);
+      UIkit.notification({
+        message: res.data.msg,
+        status: "success",
+        pos: "top-right",
+        timeout: 5000
+      });
       window.location.reload();
       history.push("/profile");
     })
     .catch(err => {
-      console.log("Error login =====> ", err.data);
-      let errMsg = err.response.data.msg;
-      document.getElementById("errMsg").innerHTML = errMsg;
+      //console.log("Error login =====> ", err.data);
+      UIkit.notification({
+        message: err.response.data.msg,
+        status: "danger",
+        pos: "top-right",
+        timeout: 5000
+      });
     });
 };
 
@@ -38,12 +60,23 @@ export const editUser = (user, id, history) => {
   axios
     .post(`${base_url}/profile/edit/${id}`, user)
     .then(res => {
-      alert(res.data.msg);
+      UIkit.notification({
+        message: res.data.msg,
+        status: "success",
+        pos: "top-right",
+        timeout: 5000
+      });
       localStorage.setItem("user", JSON.stringify(res.data.user));
       history.push("/profile");
     })
     .catch(err => {
-      console.log("Error actualizar =====> ", err.response.data.msg);
+      //console.log("Error actualizar =====> ", err.response.data.msg);
+      UIkit.notification({
+        message: err.response.data.msg,
+        status: "danger",
+        pos: "top-right",
+        timeout: 5000
+      });
       let errMsg = err.response.data.msg;
       document.getElementById("errMsg").innerHTML = errMsg;
     });
@@ -61,7 +94,12 @@ export const isLoggedIn = history => {
       console.log("Valid token", res.data);
     })
     .catch(err => {
-      alert(err.response.data.msg);
+      UIkit.notification({
+        message: err.response.data.msg,
+        status: "warning",
+        pos: "top-right",
+        timeout: 2000
+      });
       localStorage.clear();
       history.push("/login");
     });
@@ -81,38 +119,44 @@ export const ProfilePicture = (user, id) => {
     })
     .then(res => {
       localStorage.setItem("user", JSON.stringify(res.data.user));
+      UIkit.notification({
+        message: res.data.msg,
+        status: "success",
+        pos: "top-right",
+        timeout: 5000
+      });
       window.location.reload();
-      alert(res.data.msg);
-      console.log("foto de usuario actualizada", res.data.user);
+      //console.log("foto de usuario actualizada", res.data.user);
     });
 };
 
 export const NewRecipe = (form, history, id) => {
-
   let formData = new FormData();
 
-  console.log("perro",form)
-
-  if(form.images){
-    for(let file of form.images){
-      formData.append("images", file)
+  if (form.images) {
+    for (let file of form.images) {
+      formData.append("images", file);
     }
-    delete form.images
+    delete form.images;
   }
-  for(let k in form){
-    formData.append(k, form[k])
+  for (let k in form) {
+    formData.append(k, form[k]);
   }
   axios
-    .post(`${base_url}/recipe/new/${id}`, formData, form, {
+    .post(`${base_url}/recipe/new/${id}`, formData, form, {
       headers: {
         "Content-Type": "multipart/form-data"
       }
     })
     .then(res => {
-      alert(res.data.msg);
-      console.log(res);
+      UIkit.notification({
+        message: res.data.msg,
+        status: "success",
+        pos: "top-right",
+        timeout: 2500
+      });
       history.push("/profile");
-      window.location.reload();
+      //window.location.reload();
     })
     .catch(err => {
       console.log("Error new  recipe =====> ", err.response.data);
@@ -121,8 +165,96 @@ export const NewRecipe = (form, history, id) => {
     });
 };
 
+export const EditRecipe = (form, history, id) => {
+  let formData = new FormData();
+
+  if (form.images) {
+    for (let file of form.images) {
+      formData.append("images", file);
+    }
+    delete form.images;
+  }
+  for (let k in form) {
+    formData.append(k, form[k]);
+  }
+  axios
+    .post(`${base_url}/recipe/editRecipe/${id}`, formData, form, {
+      headers: {
+        "Content-Type": "multipart/form-data"
+      }
+    })
+    .then(res => {
+      //console.log("edit recipe respuesta ==>", res);
+      UIkit.notification({
+        message: res.data.msg,
+        status: "success",
+        pos: "top-right",
+        timeout: 5000
+      });
+      history.push("/profile");
+    })
+    .catch(err => {
+      console.log("Error actualizar =====> ", err);
+      UIkit.notification({
+        message: err.response.data.msg,
+        status: "warning",
+        pos: "top-right",
+        timeout: 5000
+      });
+    });
+};
+
+export const DeleteRecipe = id => {
+  axios
+    .post(`${base_url}/recipe/delete/${id}`)
+    .then(res => {
+        UIkit.notification({
+        message: res.data.msg,
+        status: "success",
+        pos: "top-right",
+        timeout: 2500
+      })
+      window.location.reload();
+    })
+    .catch(err => {
+      UIkit.notification({
+        message: err.response.data.msg,
+        status: "warning",
+        pos: "top-right",
+        timeout: 5000
+      });
+    });
+};
+
+export const Deletefavorites = id => {
+  axios
+    .post(`${base_url}/favorite/delete/${id}`)
+    .then(res => {
+        UIkit.notification({
+        message: res.data.msg,
+        status: "success",
+        pos: "top-right",
+        timeout: 2500
+      })
+      window.location.reload();
+    })
+    .catch(err => {
+      UIkit.notification({
+        message: err.response.data.msg,
+        status: "warning",
+        pos: "top-right",
+        timeout: 2000
+      });
+    });
+};
+
 export const Logout = history => {
   localStorage.clear();
-  alert("Nos vemos luego");
+  UIkit.notification({
+    message: "Nos vemos luego",
+    status: "primary",
+    pos: "top-right",
+    timeout: 2000
+  });
   history.push("/login");
 };

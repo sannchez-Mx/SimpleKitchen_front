@@ -15,7 +15,7 @@ class AllRecipes extends Component {
     };
   }
   componentWillMount() {
-    const base_url = "http://localhost:3000";
+    const base_url = window.location.hostname === 'localhost' ? 'http://localhost:3000' : 'https://simplekitchen.herokuapp.com';
     axios
       .get(`${base_url}/recipe/allRecipes`)
       .then(res => {
@@ -31,8 +31,10 @@ class AllRecipes extends Component {
     let recipes = this.state.recipes;
     return (
       <div className="uk-child-width-1-2@m" uk-grid="true">
-        <h1>Recetas</h1>
-        <p>Cocina algo diferente todos los días</p>
+      <div id="headerAllRecipes">
+        <h1 id="recetas">Recetas</h1>
+        <p id="nameLogo">Cocina algo diferente todos los días con <strong>SimpleKitchen</strong></p>
+        </div>
         <div className="subirReceta">
           <Link to={`/new-recipe/${user}`}>
             <button className="botonReceta">
@@ -40,10 +42,12 @@ class AllRecipes extends Component {
             </button>
           </Link>
         </div>
+        <div id="recetasCard">
         {recipes.length > 0 ? recipes.map((recipe, index) => (
           <Card recipe={recipe} key={index} user={recipe._user}/>
         )) : <div className="nada"><h1>Aún no hay recetas que mostrar</h1></div>
       }
+      </div>
       </div>
     );
   }

@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import {
   faSignOutAlt,
   faBook,
-  faCalendarDay,
   faHeart,
   faUtensils,
   faCog,
@@ -69,7 +68,9 @@ class NavBar extends Component {
             )}
             {token ? (
               <h4>
+                <Link to={`/favorites/${user._id}`}>
                 <FontAwesomeIcon icon={faHeart} /> Favoritos
+                </Link>
               </h4>
             ) : (
               ""
@@ -83,9 +84,9 @@ class NavBar extends Component {
             ) : (
               ""
             )}
-            <h4>
+            {/* <h4>
               <FontAwesomeIcon icon={faCalendarDay} /> Hoy
-            </h4>
+            </h4> */}
             <h4>
               <Link to={`/allRecipes`}>
                 <FontAwesomeIcon icon={faBook} /> Recetas

@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css?family=Lobster");
+@import url('https://fonts.googleapis.com/css?family=Maven+Pro|Volkhov:700i');
+
+#headerAllRecipes{
+    text-align: center;
+    background-image: url("https://images.vexels.com/media/users/3/148171/isolated/preview/b4ad26cf6cc8ad39b0923cf65e1ea540-vector-de-fondo-abstracto-rect-ngulo-by-vexels.png");
+    background-size: cover;
+    height: 50vw;
+}
+#recetas{
+    font-family: 'Lobster', cursive;
+    padding: 25px 0 0 0;
+}
+#nameLogo{
+    font-family: 'Maven Pro', sans-serif;
+    font-size: large;
+}
+@media screen and (min-width: 768px) {
+    #recetas{
+        font-family: 'Lobster', cursive;
+        padding: 60px 0 0 0;
+        font-size: 10vw;
+    }
+    #nameLogo{
+        font-family: 'Maven Pro', sans-serif;
+        font-size: large;
+        font-size: 4.5vw;
+    }
+}

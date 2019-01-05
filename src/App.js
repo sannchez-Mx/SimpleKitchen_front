@@ -8,6 +8,8 @@ import "./styles/FormEdit.css";
 import "./styles/FormNewRecipe.css";
 import "./styles/cardRecipe.css";
 import './styles/home.css';
+import "./styles/AllRecipes.css";
+import "./styles/Favorites.css";
 import {withRouter} from 'react-router-dom';
 import Router from "./Router";
 import NavBar from "./components/Nav/Nav";
@@ -43,7 +45,7 @@ class App extends Component {
     const {user} = this.state;
     editUser(user, user._id, this.props.history)
     this.setState({user})
-    console.log("usuario editado", user);
+    //console.log("usuario editado", user);
   }
 
   handleUpdateProfilePicture = e => {
@@ -54,8 +56,8 @@ class App extends Component {
 
   handleNewRecipe = e => {
     e.preventDefault();
-    const {form} = this.state.form;
-    console.log("new recipe", form);
+    //const {form} = this.state.form;
+    //console.log("new recipe", form);
     NewRecipe(this.state.form, this.props.history, this.state.user._id)
   }
 
@@ -79,7 +81,7 @@ class App extends Component {
     let field = e.target.name;
     form[field] = e.target.files ? e.target.files : e.target.value;
     this.setState({ form });
-    console.log("form new receta", form);
+    //console.log("form new receta", form);
   };
 
   handleRedirect = () => {

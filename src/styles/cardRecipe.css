@@ -23,3 +23,13 @@
 .imageCardRecipe{
     width:  -webkit-fill-available;
 }
+@media screen and (min-width: 768px) {
+    #cardReceta{
+        width: 45%;
+        margin: 0px -15px 25px 42px;
+        display: inline-block;
+    }
+    #recetasCard{
+        display: contents;
+    }
+}

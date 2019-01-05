@@ -17,9 +17,9 @@ class Login extends Component {
     return (
       <div>
         <h1 id="tituloForm">Inicia sesión</h1>
-        <div className="uk-alert-danger">
+        {/* <div className="uk-alert-danger">
           <p id="errMsg"></p>
-          </div>
+          </div> */}
         <form onSubmit={this.props.handleLogin}>
           <SignUp
             name="username"
